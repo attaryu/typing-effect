@@ -1,3 +1,10 @@
 body {
+   height: 80vh;
    font-family: Arial, Helvetica, sans-serif;
+   display: grid;
+   place-items: center;
+}
+
+.container {
+   width: 50%;
 }
