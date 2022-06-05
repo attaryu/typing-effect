@@ -17,11 +17,10 @@ body {
 
 .container .title span {
    --size: 5px;
-   align-self: flex-end;
    display: block;
    width: 1px;
    height: 45px;
-   animation: typing .8s infinite;
+   animation: typing 1s infinite;
 }
 
 @keyframes typing {

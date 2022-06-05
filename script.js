@@ -6,26 +6,28 @@ const pradata = [
 	"I'm a graphic designer.",
 	"Nice to meet you.",
 ];
-const data = pradata.map((item) => textToArray(item));
+const text = pradata.map((item) => textToArray(item));
 
-interval(data[1]);
+playAnimation();
+
+function playAnimation() {
+	let i = 0;
+}
 
 function interval(data) {
 	let count = 0;
 	const typing = setInterval(() => {
 		header.innerHTML += data[count++];
 		if (count === data.length) clearInterval(typing);
-	}, 150);
+	}, 160);
 	setTimeout(() => {
 		const closingText = [...data];
 		const closing = setInterval(() => {
 			closingText.pop();
 			header.innerHTML = closingText.join("");
-			if (closingText.length === 0) {
-				clearInterval(closing);
-			}
-		}, 80);
-	}, 1500 + 150 * data.length);
+			if (closingText.length === 0) clearInterval(closing);
+		}, 70);
+	}, 2500 + 150 * data.length);
 }
 
 function textToArray(text) {
