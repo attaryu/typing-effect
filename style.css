@@ -10,15 +10,17 @@ body {
 }
 
 .container .title {
-   --size: 6px;
    display: flex;
+   height: 40px;
+   align-items: center;
 }
 
 .container .title span {
+   --size: 5px;
    display: block;
    width: 1px;
-   height: 5vh;
-   animation: typing 1.1s infinite;
+   height: 45px;
+   animation: typing .8s infinite;
 }
 
 @keyframes typing {
