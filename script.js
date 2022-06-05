@@ -1,37 +1,39 @@
 // fitur text change
 const header = document.querySelector(".title .title-text");
-const pradata = [
-	// 15 - 18 karakter agar lebih rapi, jika lebih atur di variable control
+const texts = [
+	// 17 - 19 karakter agar lebih rapi, jika lebih atur di variable control
 	// dan jangan beri selisih jumlah karakter yang terlalu besar setiap kalimat
-	"Hello, I'm Attar.",
-	"Web Developer.",
+	"Hello, I'm someone.",
+	"Frontend Developer.",
 	"Graphic Designer.",
 	"UI & UX Designer.",
-	"Nice to meet you.",
+	"Thank you very much!",
 ];
-const text = pradata.map((item) => textToArray(item));
+const textArray = texts.map((item) => textToArray(item));
 
 // variable control -------
+// sesuaikan semua kecepatan agar lebih baik
 // kecepatan animasi mengetik
-const typingSpeed = 130;
-// kecepatan animasi menghapus
-const eraserSpeed = 50;
+const typingSpeed = 140;
 // durasi menuggu jika kalimat sudah di ketik
-const waiting = 1000;
+const waiting = 2000;
+// kecepatan animasi menghapus
+const eraserSpeed = 30;
+// jeda antar kalimat
+const pause = 8000;
 // ------------------------
 
 window.onload = () => {
 	let i = 0;
-	interval(text[i++]);
+	interval(textArray[i++]);
 	setInterval(() => {
-		interval(text[i++]);
-		if (i === text.length) i = 0;
-	}, 4500);
+		interval(textArray[i++]);
+		if (i === textArray.length) i = 0;
+	}, pause);
 };
 
 function interval(data) {
 	let count = 0;
-	header.innerHTML = "";
 	const typing = setInterval(() => {
 		header.innerHTML += data[count++];
 		if (count === data.length) clearInterval(typing);
@@ -41,9 +43,9 @@ function interval(data) {
 		const closing = setInterval(() => {
 			closingText.pop();
 			header.innerHTML = closingText.join("");
-			if (closingText.length === 0) clearInterval(closing);
+			if (closingText.length < 1) clearInterval(closing);
 		}, eraserSpeed);
-	}, waiting + typingSpeed * data.length);
+	}, waiting + (eraserSpeed + typingSpeed) * data.length);
 }
 
 function textToArray(text) {

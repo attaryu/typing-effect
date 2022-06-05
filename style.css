@@ -6,7 +6,7 @@ body {
 }
 
 .container {
-   width: 50%;
+   width: clamp(300px, 50%, 800px);
 }
 
 .container .title {
