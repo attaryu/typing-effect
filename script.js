@@ -1,13 +1,20 @@
 // fitur text change
 const header = document.querySelector(".title");
-const data = header.getAttribute("data-typing");
-let textNow = header.innerText.length;
+const pradata = [
+	"Hello, I am Attar.",
+	"I'm a Full Stack developer.",
+	"I'm also a graphic designer.",
+	"Nice to meet you.",
+];
+const data = pradata.map((item) => textToArray(item));
 
-const eraser = setInterval(() => {
-	header.innerText += "";
-	textNow--;
-	console.log(textNow);
-	if (textNow === 0) {
-		clearInterval(eraser);
+const eraser = setInterval(() => {}, 200);
+
+function textToArray(text) {
+	const array = [];
+	for (const arr of text) {
+		array.push(arr);
 	}
-}, 200);
+
+	return array;
+}
