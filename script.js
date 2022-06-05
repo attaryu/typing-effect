@@ -1,18 +1,33 @@
 // fitur text change
 const header = document.querySelector(".title .title-text");
 const pradata = [
-	"Hello, I am Attar.",
-	"I'm a Full Stack developer.",
-	"I'm a graphic designer.",
+	// 15 - 18 karakter agar lebih rapi, jika lebih atur di variable control
+	// dan jangan beri selisih jumlah karakter yang terlalu besar setiap kalimat
+	"Hello, I'm Attar.",
+	"Web Developer.",
+	"Graphic Designer.",
+	"UI & UX Designer.",
 	"Nice to meet you.",
 ];
 const text = pradata.map((item) => textToArray(item));
 
-window.onload = playAnimation();
+// variable control -------
+// kecepatan animasi mengetik
+const typingSpeed = 130;
+// kecepatan animasi menghapus
+const eraserSpeed = 50;
+// durasi menuggu jika kalimat sudah di ketik
+const waiting = 1000;
+// ------------------------
 
-function playAnimation() {
-	interval(text[0]);
-}
+window.onload = () => {
+	let i = 0;
+	interval(text[i++]);
+	setInterval(() => {
+		interval(text[i++]);
+		if (i === text.length) i = 0;
+	}, 4500);
+};
 
 function interval(data) {
 	let count = 0;
@@ -20,15 +35,15 @@ function interval(data) {
 	const typing = setInterval(() => {
 		header.innerHTML += data[count++];
 		if (count === data.length) clearInterval(typing);
-	}, 160);
+	}, typingSpeed);
 	setTimeout(() => {
 		const closingText = [...data];
 		const closing = setInterval(() => {
 			closingText.pop();
 			header.innerHTML = closingText.join("");
 			if (closingText.length === 0) clearInterval(closing);
-		}, 70);
-	}, 2500 + 160 * data.length);
+		}, eraserSpeed);
+	}, waiting + typingSpeed * data.length);
 }
 
 function textToArray(text) {
