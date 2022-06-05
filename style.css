@@ -8,3 +8,19 @@ body {
 .container {
    width: 50%;
 }
+
+.container .title {
+   --size: 6px;
+   display: inline-block;
+   animation: typing 1.1s infinite;
+}
+
+@keyframes typing {
+   from {
+      border-right: var(--size);
+   }
+
+   to {
+      border-right: var(--size) solid black;
+   }
+}
