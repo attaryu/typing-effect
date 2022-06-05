@@ -8,6 +8,8 @@ const pradata = [
 ];
 const data = pradata.map((item) => textToArray(item));
 
+interval(data[1]);
+
 function interval(data) {
 	let count = 0;
 	const typing = setInterval(() => {
@@ -15,7 +17,14 @@ function interval(data) {
 		if (count === data.length) clearInterval(typing);
 	}, 150);
 	setTimeout(() => {
-		header.innerHTML = "";
+		const closingText = [...data];
+		const closing = setInterval(() => {
+			closingText.pop();
+			header.innerHTML = closingText.join("");
+			if (closingText.length === 0) {
+				clearInterval(closing);
+			}
+		}, 80);
 	}, 1500 + 150 * data.length);
 }
 
