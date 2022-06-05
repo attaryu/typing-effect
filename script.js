@@ -8,14 +8,15 @@ const pradata = [
 ];
 const text = pradata.map((item) => textToArray(item));
 
-playAnimation();
+window.onload = playAnimation();
 
 function playAnimation() {
-	let i = 0;
+	interval(text[0]);
 }
 
 function interval(data) {
 	let count = 0;
+	header.innerHTML = "";
 	const typing = setInterval(() => {
 		header.innerHTML += data[count++];
 		if (count === data.length) clearInterval(typing);
@@ -27,7 +28,7 @@ function interval(data) {
 			header.innerHTML = closingText.join("");
 			if (closingText.length === 0) clearInterval(closing);
 		}, 70);
-	}, 2500 + 150 * data.length);
+	}, 2500 + 160 * data.length);
 }
 
 function textToArray(text) {
