@@ -1,36 +1,32 @@
-// fitur text change
 const header = document.querySelector(".title .title-text");
+
+// input your text in array above
 const texts = [
-	// 17 - 19 karakter agar lebih rapi, jika lebih atur di variable control
-	// dan jangan beri selisih jumlah karakter yang terlalu besar setiap kalimat
-	"Hello, I'm someone.",
-	"Frontend Developer.",
-	"Graphic Designer.",
-	"UI & UX Designer.",
-	"Thank you very much!",
+	"Hello, I'm Attar.",
+	"This is a typing effect :D",
+	"There are some bugs",
+	"Please if you want to fix it :)",
 ];
+
+// setting this
+const typingSpeed = 90;
+const eraseSpeed = 50;
+const rest = 1000;
+const pause = 300;
+
+// machine
 const textArray = texts.map((item) => textToArray(item));
 
-// variable control -------
-// sesuaikan semua kecepatan agar lebih baik
-// kecepatan animasi mengetik
-const typingSpeed = 140;
-// durasi menuggu jika kalimat sudah di ketik
-const waiting = 2000;
-// kecepatan animasi menghapus
-const eraserSpeed = 30;
-// jeda antar kalimat
-const pause = 8000;
-// ------------------------
+window.onload = recursive();
 
-window.onload = () => {
-	let i = 0;
-	interval(textArray[i++]);
-	setInterval(() => {
-		interval(textArray[i++]);
+function recursive(i = 0) {
+	interval(textArray[i]);
+	setTimeout(() => {
+		i++;
 		if (i === textArray.length) i = 0;
-	}, pause);
-};
+		recursive(i);
+	}, (typingSpeed + eraseSpeed) * textArray[i].length + (pause + rest));
+}
 
 function interval(data) {
 	let count = 0;
@@ -44,8 +40,8 @@ function interval(data) {
 			closingText.pop();
 			header.innerHTML = closingText.join("");
 			if (closingText.length < 1) clearInterval(closing);
-		}, eraserSpeed);
-	}, waiting + (eraserSpeed + typingSpeed) * data.length);
+		}, eraseSpeed);
+	}, typingSpeed * data.length + rest);
 }
 
 function textToArray(text) {
