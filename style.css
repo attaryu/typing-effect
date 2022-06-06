@@ -6,5 +6,39 @@ body {
 }
 
 .container {
-   width: 50%;
+   width: clamp(300px, 50%, 800px);
+   height: 80vh;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+.container .title {
+   display: flex;
+   height: 40px;
+   width: 100%;
+   align-items: center;
+}
+
+.container .title::after {
+   --size: 5px;
+   content: '';
+   display: block;
+   width: 1px;
+   height: 45px;
+   animation: typing 1s infinite;
+}
+
+a {
+   margin-top: 40px;
+}
+
+@keyframes typing {
+   from {
+      border-right: var(--size);
+   }
+
+   to {
+      border-right: var(--size) solid black;
+   }
 }
