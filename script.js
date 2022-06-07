@@ -11,7 +11,7 @@ const texts = [
 // setting this
 const typingSpeed = 90;
 const eraseSpeed = 50;
-const rest = 1000;
+const rest = 800;
 const pause = 300;
 
 // machine
