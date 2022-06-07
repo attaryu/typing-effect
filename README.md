@@ -17,5 +17,5 @@ Saya akan sangat berterima kasih :D
 
 
 
-sekian terima kasih
+sekian terima kasih, 
 wassalamualaikum
