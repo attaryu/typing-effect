@@ -14,6 +14,7 @@ saya sedikit menangani bug tersebut saat animasi menghapus teks di jalankan pada
 Mungkin anda tau solusinya, anda diperkenankan memperbaikinya dan kirim kembali.
 Saya akan sangat berterima kasih :D
 
+oiya, ada bug juga di animasi caret, saat teks nya dua baris, animaso caret akan tetap di tengah.
 
 
 
